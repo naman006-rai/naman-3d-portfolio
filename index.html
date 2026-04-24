@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Naman Kumar Rai builds production AI systems, serverless platforms, and full-stack cloud products with strong engineering taste." />
+  <title>Naman Kumar Rai | AI Systems & Cloud Platform Engineer</title>
+  <meta name="theme-color" content="#07111f" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<body>
+  <div class="grid-bg" aria-hidden="true"></div>
+  <div class="cursor-glow" id="cursor-glow" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Naman Kumar Rai home">
+      <span class="brand__mark">NKR</span>
+      <span class="brand__text">Naman Kumar Rai</span>
+    </a>
+    <nav class="nav" aria-label="Portfolio navigation">
+      <a href="#impact">Impact</a>
+      <a href="#principles">Principles</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#lab">Lab</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="header-cta" href="mailto:naman.rai006@gmail.com">Hire me</a>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <canvas id="hero-canvas" class="hero__canvas" aria-label="3D cloud architecture scene"></canvas>
+
+      <div class="hero__content">
+        <div class="eyebrow">
+          <span class="pulse"></span>
+          Bengaluru, India · AI systems + cloud platforms
+        </div>
+        <h1>
+          Building useful AI systems on boring, reliable infrastructure.
+        </h1>
+        <p class="hero__lead">
+          I like the parts of software where demos stop and systems begin: retrieval quality, event boundaries, idempotency, auth, observability, infra, and the UX that makes all of it usable.
+        </p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#projects">
+            Read the systems
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14m-6-7 7 7-7 7"/></svg>
+          </a>
+          <a class="btn btn--ghost" href="mailto:naman.rai006@gmail.com">naman.rai006@gmail.com</a>
+        </div>
+
+        <div class="hero__stats" id="impact">
+          <div>
+            <strong>7+</strong>
+            <span>Years engineering</span>
+          </div>
+          <div>
+            <strong>19+</strong>
+            <span>RPA bot processes monitored</span>
+          </div>
+          <div>
+            <strong>947</strong>
+            <span>Confluence pages indexed for RAG</span>
+          </div>
+          <div>
+            <strong>10+</strong>
+            <span>AWS services hands-on</span>
+          </div>
+        </div>
+      </div>
+
+      <aside class="hero-card">
+        <div class="hero-card__top">
+          <span>Current focus</span>
+          <span class="status">Available</span>
+        </div>
+        <h2>Not "AI wrapper." Actual systems engineer.</h2>
+        <p>
+          I turn unclear internal workflows into tools people use: dashboards, event pipelines, RAG assistants, and authenticated SPAs running on AWS.
+        </p>
+        <div class="terminal">
+          <div class="terminal__bar"><i></i><i></i><i></i></div>
+          <pre><code>systems I enjoy:
+  - ambiguous problem -> working product
+  - retrieval that can be evaluated
+  - serverless flows with replay safety
+  - UIs that expose the right state
+  - infra that can be rebuilt</code></pre>
+        </div>
+      </aside>
+    </section>
+
+    <section class="ticker" aria-label="Core strengths">
+      <div class="ticker__track">
+        <span>AWS Serverless</span><span>React</span><span>Node.js</span><span>Java</span><span>RAG Engineering</span><span>Terraform</span><span>Okta SSO</span><span>Kubernetes</span>
+        <span>AWS Serverless</span><span>React</span><span>Node.js</span><span>Java</span><span>RAG Engineering</span><span>Terraform</span><span>Okta SSO</span><span>Kubernetes</span>
+      </div>
+    </section>
+
+    <section class="section principles" id="principles">
+      <div class="section-head section-head--split">
+        <div>
+          <span class="section-kicker">Operating System</span>
+          <h2>How I think about building software.</h2>
+        </div>
+        <p class="section-note">
+          Strong portfolios do not just list tools. They reveal judgment. These are the defaults I bring into design reviews, incident calls, and AI product work.
+        </p>
+      </div>
+
+      <div class="principle-grid">
+        <article class="principle-card reveal">
+          <span>01</span>
+          <h3>Make state explicit.</h3>
+          <p>Most production bugs hide in implicit state: retries, duplicate webhooks, stale UI, hidden auth assumptions. I prefer designs where ownership, lifecycle, and failure modes are visible.</p>
+        </article>
+        <article class="principle-card reveal">
+          <span>02</span>
+          <h3>Evaluate AI like software.</h3>
+          <p>RAG quality is not vibes. Chunking, retrieval, reranking, prompts, fallbacks, and latency all need testable hypotheses and human-readable traces.</p>
+        </article>
+        <article class="principle-card reveal">
+          <span>03</span>
+          <h3>Boring infra wins.</h3>
+          <p>Serverless, queues, DynamoDB conditions, CDK/Terraform, logs, alarms, and small blast radii beat clever architectures that cannot be operated at 2 AM.</p>
+        </article>
+        <article class="principle-card reveal">
+          <span>04</span>
+          <h3>UX is part of reliability.</h3>
+          <p>If users cannot understand what the system did, they will invent stories. Good interfaces expose status, history, retry paths, ownership, and confidence.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section experience" id="experience">
+      <div class="section-head">
+        <span class="section-kicker">Experience</span>
+        <h2>Production systems across five product domains.</h2>
+      </div>
+
+      <div class="timeline">
+        <article class="role reveal">
+          <div class="role__meta">
+            <span>08/2022 — Present</span>
+            <strong>Nike, Inc</strong>
+          </div>
+          <div class="role__body">
+            <h3>Software Engineer III</h3>
+            <ul>
+              <li>Built the CPI Automation Dashboard from scratch with React, Okta SSO, AWS Lambda, DynamoDB, Terraform, and CloudFront.</li>
+              <li>Monitored 19+ RPA bot processes in real time and improved operational visibility for business-critical workflows.</li>
+              <li>Engineered an event-driven Box webhook pipeline using API Gateway, Lambda, DynamoDB, and UI updates with DynamoDB condition-expression idempotency.</li>
+              <li>Contributed to Nike Global Code AI Calendar Agent using Python and FastAPI.</li>
+              <li>Built Calendar Standalone SPA with React, AWS CDK, Okta, and Dynatrace.</li>
+              <li>Built CPI Knowledge Assistant: a RAG agent over 947 Confluence pages using Ollama, FAISS, BM25, and HyDE.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="role reveal">
+          <div class="role__meta">
+            <span>03/2021 — 08/2022</span>
+            <strong>IBM</strong>
+          </div>
+          <div class="role__body">
+            <h3>Senior System Engineer</h3>
+            <ul>
+              <li>Diagnosed and resolved integration issues for Barclays private cloud applications running on EC2.</li>
+              <li>Developed a microservices-based loyalty management API on Kubernetes.</li>
+              <li>Introduced Terraform infrastructure-as-code practices across teams.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="role reveal">
+          <div class="role__meta">
+            <span>12/2018 — 03/2021</span>
+            <strong>Cognizant</strong>
+          </div>
+          <div class="role__body">
+            <h3>Programmer Analyst</h3>
+            <ul>
+              <li>Built and optimized Java Spring Boot applications on Amazon EKS.</li>
+              <li>Developed report generation applications for enterprise insights.</li>
+              <li>Built serverless data platforms using AWS services.</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section projects" id="projects">
+      <div class="section-head section-head--split">
+        <div>
+          <span class="section-kicker">Selected Work</span>
+          <h2>Projects that show range, depth, and ownership.</h2>
+        </div>
+        <div class="project-filters" aria-label="Project filters">
+          <button class="active" data-filter="all">All</button>
+          <button data-filter="cloud">Cloud</button>
+          <button data-filter="ai">AI/RAG</button>
+          <button data-filter="frontend">Frontend</button>
+        </div>
+      </div>
+
+      <div class="project-grid">
+        <article class="project-card reveal" data-category="cloud frontend">
+          <div class="project-card__num">01</div>
+          <h3>CPI Automation Dashboard</h3>
+          <p>Full-stack platform for monitoring 19+ RPA bot processes in real time, built with React, Okta SSO, Lambda, DynamoDB, Terraform, and CloudFront.</p>
+          <div class="tags"><span>React</span><span>Lambda</span><span>DynamoDB</span><span>Terraform</span></div>
+        </article>
+
+        <article class="project-card reveal" data-category="cloud">
+          <div class="project-card__num">02</div>
+          <h3>Box Webhook Event Pipeline</h3>
+          <p>Event-driven integration from Box to API Gateway, Lambda, DynamoDB, and UI updates, with idempotency via DynamoDB condition expressions.</p>
+          <div class="tags"><span>API Gateway</span><span>Lambda</span><span>DynamoDB</span><span>Webhooks</span></div>
+        </article>
+
+        <article class="project-card reveal" data-category="ai">
+          <div class="project-card__num">03</div>
+          <h3>CPI Knowledge Assistant</h3>
+          <p>RAG assistant over 947 Confluence pages combining Ollama, FAISS, BM25, and HyDE for internal knowledge discovery.</p>
+          <div class="tags"><span>RAG</span><span>Ollama</span><span>FAISS</span><span>BM25</span><span>HyDE</span></div>
+        </article>
+
+        <article class="project-card reveal" data-category="ai frontend">
+          <div class="project-card__num">04</div>
+          <h3>Global Code AI Calendar Agent</h3>
+          <p>AI-powered calendar agent contribution using Python and FastAPI, focused on practical workflow automation.</p>
+          <div class="tags"><span>Python</span><span>FastAPI</span><span>AI Agent</span></div>
+        </article>
+
+        <article class="project-card reveal" data-category="frontend cloud">
+          <div class="project-card__num">05</div>
+          <h3>Calendar Standalone SPA</h3>
+          <p>React SPA deployed with AWS CDK, integrated with Okta authentication and Dynatrace observability.</p>
+          <div class="tags"><span>React</span><span>AWS CDK</span><span>Okta</span><span>Dynatrace</span></div>
+        </article>
+
+        <article class="project-card reveal" data-category="cloud">
+          <div class="project-card__num">06</div>
+          <h3>Microservices Loyalty API</h3>
+          <p>Kubernetes-based loyalty management API built during IBM tenure, with Terraform adoption across engineering teams.</p>
+          <div class="tags"><span>Kubernetes</span><span>Microservices</span><span>Terraform</span></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section lab" id="lab">
+      <div class="section-head section-head--split">
+        <div>
+          <span class="section-kicker">Interactive Lab</span>
+          <h2>RAG pipeline, explained like a system.</h2>
+        </div>
+        <p class="section-note">
+          A mini model of the CPI Knowledge Assistant architecture: documents enter, retrieval narrows the world, generation answers with evidence.
+        </p>
+      </div>
+
+      <div class="lab-shell reveal">
+        <div class="lab-visual" aria-hidden="true">
+          <div class="pipeline" id="pipeline">
+            <button class="pipe-node active" data-step="0"><b>01</b><span>Ingest</span></button>
+            <i></i>
+            <button class="pipe-node" data-step="1"><b>02</b><span>Index</span></button>
+            <i></i>
+            <button class="pipe-node" data-step="2"><b>03</b><span>Retrieve</span></button>
+            <i></i>
+            <button class="pipe-node" data-step="3"><b>04</b><span>Generate</span></button>
+            <i></i>
+            <button class="pipe-node" data-step="4"><b>05</b><span>Evaluate</span></button>
+          </div>
+        </div>
+        <div class="lab-panel">
+          <div class="lab-panel__top">
+            <span id="lab-step">Step 01</span>
+            <span>947 pages</span>
+          </div>
+          <h3 id="lab-title">Ingest the messy internal knowledge base.</h3>
+          <p id="lab-copy">
+            Confluence content is scraped, normalized, deduplicated, and prepared for retrieval. The goal is not to "chat with docs"; it is to preserve source structure so answers can be traced.
+          </p>
+          <pre><code id="lab-code">source -> parser -> cleaner -> chunk queue</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="section writing" id="writing">
+      <div class="section-head">
+        <span class="section-kicker">Writing Samples</span>
+        <h2>Technical notes I would publish.</h2>
+      </div>
+      <div class="writing-grid">
+        <article class="writing-card reveal">
+          <span>RAG</span>
+          <h3>BM25 is still useful when embeddings look magical.</h3>
+          <p>Hybrid retrieval works because enterprise knowledge contains IDs, acronyms, team names, and procedural phrases that dense vectors often blur.</p>
+        </article>
+        <article class="writing-card reveal">
+          <span>Serverless</span>
+          <h3>DynamoDB condition expressions are underrated infrastructure.</h3>
+          <p>They are not just database syntax. Used well, they become a simple, cheap, and operationally clear idempotency primitive.</p>
+        </article>
+        <article class="writing-card reveal">
+          <span>Product Engineering</span>
+          <h3>Internal tools fail when they hide uncertainty.</h3>
+          <p>Dashboards should show confidence, recency, ownership, and escape hatches. Otherwise users learn to distrust accurate systems.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section skills" id="skills">
+      <div class="section-head">
+        <span class="section-kicker">Skills</span>
+        <h2>A stack built for cloud-scale product engineering.</h2>
+      </div>
+
+      <div class="skill-layout">
+        <div class="skill-orbit reveal">
+          <canvas id="skills-canvas" aria-label="3D skills orbit visualization"></canvas>
+        </div>
+
+        <div class="skill-groups">
+          <article class="skill-group reveal">
+            <h3>Cloud & Infrastructure</h3>
+            <p>AWS Lambda, API Gateway, DynamoDB, S3, CloudFront, SQS, SNS, CloudWatch, Aurora, EC2, Terraform, CloudFormation, AWS CDK, Jenkins, Docker, Kubernetes.</p>
+          </article>
+          <article class="skill-group reveal">
+            <h3>Backend & Data</h3>
+            <p>Node.js, Java, Spring Boot, Python, FastAPI, microservices, serverless data platforms, MongoDB, Couchbase, integration testing, Apache JMeter.</p>
+          </article>
+          <article class="skill-group reveal">
+            <h3>Frontend & Product</h3>
+            <p>React, JavaScript, TypeScript, HTML, CSS, SPA architecture, Okta SSO, Dynatrace, Splunk, Jest, Agile/Scrum delivery.</p>
+          </article>
+          <article class="skill-group reveal">
+            <h3>AI Engineering</h3>
+            <p>GenAI applications, RAG systems, Ollama, FAISS, BM25 retrieval, HyDE, AI agent workflows, knowledge assistant architecture.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section credentials">
+      <div class="credential-card reveal">
+        <span>Certification</span>
+        <h3>AWS Certified Cloud Practitioner</h3>
+      </div>
+      <div class="credential-card reveal">
+        <span>Certification</span>
+        <h3>Microsoft Certified: Azure Fundamentals (AZ-900)</h3>
+      </div>
+      <div class="credential-card reveal">
+        <span>Education</span>
+        <h3>M.Tech, Software Engineering</h3>
+        <p>Birla Institute of Engineering and Technology</p>
+      </div>
+      <div class="credential-card reveal">
+        <span>Education</span>
+        <h3>B.Tech, Electrical & Electronics Engineering</h3>
+        <p>Shambhunath Institute of Engineering & Technology</p>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="contact__inner reveal">
+        <span class="section-kicker">Contact</span>
+        <h2>Have a platform, AI product, or cloud migration that needs ownership?</h2>
+        <p>Let's talk about the architecture, the constraints, and the quickest path to production.</p>
+        <div class="contact__actions">
+          <a class="btn btn--primary" href="mailto:naman.rai006@gmail.com">Email me</a>
+          <a class="btn btn--ghost" href="https://www.linkedin.com/search/results/all/?keywords=Naman%20Kumar%20Rai" target="_blank" rel="noreferrer">Find me on LinkedIn</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>Naman Kumar Rai</span>
+    <span>Bengaluru, India</span>
+    <a href="mailto:naman.rai006@gmail.com">naman.rai006@gmail.com</a>
+  </footer>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
