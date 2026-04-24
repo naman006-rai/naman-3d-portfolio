@@ -188,19 +188,28 @@ const lerp = (a, b, t) => a + (b - a) * t;
     metalness: 0.75,
     clearcoat: 1,
   });
+  const hoodieDark = new THREE.MeshStandardMaterial({ color: 0x07111f, roughness: 0.82 });
+  const hoodieTrim = new THREE.MeshStandardMaterial({ color: 0x38d7ff, roughness: 0.55 });
+  const stickerMat = new THREE.MeshBasicMaterial({ color: 0xffd166 });
+  const laptopLineMat = new THREE.MeshBasicMaterial({ color: 0x7cf7ff, transparent: true, opacity: 0.82 });
 
-  const body = new THREE.Mesh(new THREE.CapsuleGeometry(1.25, 1.5, 8, 24), hoodie);
+  const hood = new THREE.Mesh(new THREE.TorusGeometry(0.96, 0.22, 18, 48), hoodieDark);
+  hood.position.set(0, 0.18, -0.06);
+  hood.scale.set(1.04, 1.22, 0.5);
+  root.add(hood);
+
+  const body = new THREE.Mesh(new THREE.CapsuleGeometry(1.34, 1.55, 10, 28), hoodie);
   body.position.y = -1.55;
-  body.scale.set(1.15, 0.95, 0.62);
+  body.scale.set(1.2, 0.96, 0.66);
   root.add(body);
 
   const neck = new THREE.Mesh(new THREE.CylinderGeometry(0.32, 0.38, 0.48, 24), skin);
   neck.position.y = -0.58;
   root.add(neck);
 
-  const head = new THREE.Mesh(new THREE.SphereGeometry(0.88, 36, 28), skin);
+  const head = new THREE.Mesh(new THREE.SphereGeometry(0.88, 42, 32), skin);
   head.position.y = 0.18;
-  head.scale.set(0.92, 1.08, 0.86);
+  head.scale.set(0.9, 1.06, 0.84);
   root.add(head);
 
   const hairCap = new THREE.Mesh(new THREE.SphereGeometry(0.9, 36, 16, 0, Math.PI * 2, 0, Math.PI * 0.55), hair);
@@ -208,10 +217,25 @@ const lerp = (a, b, t) => a + (b - a) * t;
   hairCap.scale.set(0.96, 0.68, 0.92);
   root.add(hairCap);
 
-  const fringe = new THREE.Mesh(new THREE.ConeGeometry(0.24, 0.42, 5), hair);
-  fringe.position.set(-0.32, 0.74, 0.58);
-  fringe.rotation.set(0.65, -0.15, 0.42);
-  root.add(fringe);
+  const hairTufts = new THREE.Group();
+  [
+    [-0.36, 0.78, 0.55, 0.66, -0.15, 0.42],
+    [-0.08, 0.86, 0.62, 0.72, 0.05, 0.08],
+    [0.24, 0.78, 0.57, 0.62, 0.2, -0.36],
+  ].forEach(([x, y, z, rx, ry, rz]) => {
+    const tuft = new THREE.Mesh(new THREE.ConeGeometry(0.18, 0.38, 5), hair);
+    tuft.position.set(x, y, z);
+    tuft.rotation.set(rx, ry, rz);
+    hairTufts.add(tuft);
+  });
+  root.add(hairTufts);
+
+  const earL = new THREE.Mesh(new THREE.SphereGeometry(0.15, 16, 12), skin);
+  earL.position.set(-0.84, 0.16, 0.1);
+  earL.scale.set(0.52, 0.8, 0.38);
+  const earR = earL.clone();
+  earR.position.x = 0.84;
+  root.add(earL, earR);
 
   const eyeMat = new THREE.MeshBasicMaterial({ color: 0x06111f });
   const eyeL = new THREE.Mesh(new THREE.SphereGeometry(0.055, 12, 12), eyeMat);
@@ -225,14 +249,62 @@ const lerp = (a, b, t) => a + (b - a) * t;
   smile.rotation.set(0, 0, Math.PI);
   root.add(smile);
 
-  const lensGeom = new THREE.TorusGeometry(0.18, 0.018, 8, 28);
+  const nose = new THREE.Mesh(new THREE.ConeGeometry(0.07, 0.2, 14), skin);
+  nose.position.set(0, 0.11, 0.86);
+  nose.rotation.x = Math.PI / 2;
+  root.add(nose);
+
+  const browGeom = new THREE.BoxGeometry(0.26, 0.028, 0.028);
+  const browL = new THREE.Mesh(browGeom, hair);
+  browL.position.set(-0.29, 0.45, 0.77);
+  browL.rotation.z = 0.14;
+  const browR = browL.clone();
+  browR.position.x = 0.29;
+  browR.rotation.z = -0.14;
+  root.add(browL, browR);
+
+  const lensGeom = new THREE.TorusGeometry(0.22, 0.022, 10, 34);
   const lensL = new THREE.Mesh(lensGeom, glassMat);
-  lensL.position.set(-0.28, 0.3, 0.78);
+  lensL.position.set(-0.3, 0.3, 0.79);
   const lensR = lensL.clone();
-  lensR.position.x = 0.28;
-  const bridge = new THREE.Mesh(new THREE.BoxGeometry(0.2, 0.025, 0.025), glassMat);
+  lensR.position.x = 0.3;
+  const bridge = new THREE.Mesh(new THREE.BoxGeometry(0.18, 0.03, 0.03), glassMat);
   bridge.position.set(0, 0.3, 0.78);
-  root.add(lensL, lensR, bridge);
+  const templeL = new THREE.Mesh(new THREE.BoxGeometry(0.36, 0.025, 0.025), glassMat);
+  templeL.position.set(-0.64, 0.3, 0.62);
+  templeL.rotation.y = -0.42;
+  const templeR = templeL.clone();
+  templeR.position.x = 0.64;
+  templeR.rotation.y = 0.42;
+  root.add(lensL, lensR, bridge, templeL, templeR);
+
+  const drawStringL = new THREE.Mesh(new THREE.CylinderGeometry(0.018, 0.018, 0.82, 10), hoodieTrim);
+  drawStringL.position.set(-0.28, -0.98, 0.69);
+  drawStringL.rotation.z = -0.14;
+  const drawStringR = drawStringL.clone();
+  drawStringR.position.x = 0.28;
+  drawStringR.rotation.z = 0.14;
+  const knotL = new THREE.Mesh(new THREE.SphereGeometry(0.052, 12, 12), hoodieTrim);
+  knotL.position.set(-0.36, -1.36, 0.7);
+  const knotR = knotL.clone();
+  knotR.position.x = 0.36;
+  root.add(drawStringL, drawStringR, knotL, knotR);
+
+  const sleeveGeom = new THREE.CapsuleGeometry(0.22, 0.92, 8, 18);
+  const sleeveL = new THREE.Mesh(sleeveGeom, hoodie);
+  sleeveL.position.set(-1.08, -1.42, 0.48);
+  sleeveL.rotation.set(0.55, 0.08, -0.52);
+  const sleeveR = sleeveL.clone();
+  sleeveR.position.x = 1.08;
+  sleeveR.rotation.z = 0.52;
+  root.add(sleeveL, sleeveR);
+
+  const handL = new THREE.Mesh(new THREE.SphereGeometry(0.16, 16, 12), skin);
+  handL.position.set(-0.82, -1.86, 1.08);
+  handL.scale.set(1.25, 0.6, 0.75);
+  const handR = handL.clone();
+  handR.position.x = 0.82;
+  root.add(handL, handR);
 
   const laptop = new THREE.Group();
   const screen = new THREE.Mesh(new THREE.BoxGeometry(1.8, 0.95, 0.06), new THREE.MeshPhysicalMaterial({
@@ -247,10 +319,23 @@ const lerp = (a, b, t) => a + (b - a) * t;
   const screenGlow = new THREE.Mesh(new THREE.PlaneGeometry(1.45, 0.58), cyanMat);
   screenGlow.position.set(0, -1.31, 1.088);
   screenGlow.rotation.x = -0.18;
+  const codeLineGroup = new THREE.Group();
+  [-0.18, 0, 0.18].forEach((y, index) => {
+    const line = new THREE.Mesh(new THREE.PlaneGeometry(0.95 - index * 0.18, 0.025), laptopLineMat);
+    line.position.set(-0.05 + index * 0.06, -1.31 + y, 1.092);
+    line.rotation.x = -0.18;
+    codeLineGroup.add(line);
+  });
   const base = new THREE.Mesh(new THREE.BoxGeometry(2.05, 0.08, 0.85), glassMat);
   base.position.set(0, -1.83, 1.35);
   base.rotation.x = 0.36;
-  laptop.add(screen, screenGlow, base);
+  const stickerA = new THREE.Mesh(new THREE.BoxGeometry(0.2, 0.11, 0.012), stickerMat);
+  stickerA.position.set(-0.62, -1.78, 0.99);
+  stickerA.rotation.set(0.36, 0, 0.03);
+  const stickerB = new THREE.Mesh(new THREE.BoxGeometry(0.16, 0.16, 0.012), cyanMat);
+  stickerB.position.set(0.58, -1.78, 0.99);
+  stickerB.rotation.set(0.36, 0, -0.1);
+  laptop.add(screen, screenGlow, codeLineGroup, base, stickerA, stickerB);
   root.add(laptop);
 
   const badge = new THREE.Mesh(new THREE.BoxGeometry(0.5, 0.18, 0.035), cyanMat);
@@ -289,6 +374,10 @@ const lerp = (a, b, t) => a + (b - a) * t;
     root.position.y = 0.08 + Math.sin(t * 1.3) * 0.035;
     head.rotation.y = Math.sin(t * 0.75) * 0.08;
     hairCap.rotation.y = head.rotation.y;
+    hairTufts.rotation.y = head.rotation.y;
+    hood.rotation.y = head.rotation.y * 0.45;
+    lensL.rotation.y = head.rotation.y * 0.28;
+    lensR.rotation.y = head.rotation.y * 0.28;
     screenGlow.material.opacity = 0.52 + Math.sin(t * 2.4) * 0.16;
 
     orbit.children.forEach((chip, index) => {
