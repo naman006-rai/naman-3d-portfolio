@@ -359,7 +359,7 @@ svg {
 
 .avatar-stage {
   position: relative;
-  height: 18rem;
+  height: 19.5rem;
   margin-top: 1.35rem;
   overflow: hidden;
   border: 1px solid rgba(56, 215, 255, 0.22);
@@ -382,6 +382,7 @@ svg {
 .avatar-stage canvas {
   width: 100%;
   height: 100%;
+  opacity: 0.38;
 }
 
 .avatar-stage__label {
@@ -406,6 +407,283 @@ svg {
   color: var(--text);
   font-size: 0.86rem;
   letter-spacing: -0.02em;
+}
+
+.style-avatar {
+  position: absolute;
+  left: 50%;
+  bottom: -0.8rem;
+  width: min(19rem, 76%);
+  height: 18rem;
+  transform: translateX(-50%);
+  filter: drop-shadow(0 24px 28px rgba(0, 0, 0, 0.45));
+}
+
+.style-avatar__halo {
+  position: absolute;
+  left: 50%;
+  top: 1rem;
+  width: 11rem;
+  height: 11rem;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  background: radial-gradient(circle, rgba(56, 215, 255, 0.18), transparent 68%);
+  box-shadow: 0 0 48px rgba(56, 215, 255, 0.24);
+}
+
+.style-avatar__headphones {
+  position: absolute;
+  left: 50%;
+  top: 2.1rem;
+  width: 7rem;
+  height: 5.2rem;
+  transform: translateX(-50%);
+  border: 0.34rem solid #07111f;
+  border-bottom: 0;
+  border-radius: 5rem 5rem 0 0;
+  z-index: 5;
+}
+
+.style-avatar__headphones span {
+  position: absolute;
+  bottom: -2.1rem;
+  width: 1.05rem;
+  height: 2.2rem;
+  border-radius: 0.8rem;
+  background: linear-gradient(180deg, #101d31, #050912);
+  box-shadow: inset 0 0 0 1px rgba(56, 215, 255, 0.3);
+}
+
+.style-avatar__headphones span:first-child {
+  left: -0.65rem;
+}
+
+.style-avatar__headphones span:last-child {
+  right: -0.65rem;
+}
+
+.style-avatar__hair {
+  position: absolute;
+  left: 50%;
+  top: 2.3rem;
+  width: 5.8rem;
+  height: 3.7rem;
+  transform: translateX(-50%) rotate(-2deg);
+  border-radius: 3.4rem 3.4rem 1.3rem 1.3rem;
+  background:
+    radial-gradient(circle at 24% 72%, #1f2937 0 18%, transparent 19%),
+    radial-gradient(circle at 48% 80%, #111827 0 22%, transparent 23%),
+    radial-gradient(circle at 70% 72%, #1f2937 0 18%, transparent 19%),
+    linear-gradient(135deg, #273449, #07111f 72%);
+  z-index: 6;
+}
+
+.style-avatar__face {
+  position: absolute;
+  left: 50%;
+  top: 4rem;
+  width: 5.25rem;
+  height: 5.8rem;
+  transform: translateX(-50%);
+  border-radius: 45% 45% 48% 48%;
+  background: linear-gradient(180deg, #d39768, #bd714a);
+  box-shadow: inset 0 -0.3rem 0 rgba(76, 39, 26, 0.08);
+  z-index: 4;
+}
+
+.style-avatar__brows i {
+  position: absolute;
+  top: 1.55rem;
+  width: 1rem;
+  height: 0.16rem;
+  border-radius: 999px;
+  background: #111827;
+}
+
+.style-avatar__brows i:first-child {
+  left: 1rem;
+  transform: rotate(7deg);
+}
+
+.style-avatar__brows i:last-child {
+  right: 1rem;
+  transform: rotate(-7deg);
+}
+
+.style-avatar__glasses {
+  position: absolute;
+  top: 1.95rem;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  gap: 0.18rem;
+  transform: translateX(-50%);
+}
+
+.style-avatar__glasses i {
+  width: 1.45rem;
+  height: 1.1rem;
+  border: 0.18rem solid #07111f;
+  border-radius: 0.42rem;
+  background: rgba(217, 244, 255, 0.1);
+  box-shadow: inset 0 0 0.65rem rgba(56, 215, 255, 0.16);
+}
+
+.style-avatar__glasses b {
+  width: 0.34rem;
+  height: 0.16rem;
+  border-radius: 999px;
+  background: #07111f;
+}
+
+.style-avatar__nose {
+  position: absolute;
+  left: 50%;
+  top: 3rem;
+  width: 0.42rem;
+  height: 0.78rem;
+  transform: translateX(-50%);
+  border-radius: 0 0 0.4rem 0.4rem;
+  background: rgba(111, 58, 37, 0.24);
+}
+
+.style-avatar__smile {
+  position: absolute;
+  left: 50%;
+  bottom: 1.05rem;
+  width: 1.25rem;
+  height: 0.42rem;
+  transform: translateX(-50%);
+  border-bottom: 0.16rem solid #4a2118;
+  border-radius: 0 0 1rem 1rem;
+}
+
+.style-avatar__neck {
+  position: absolute;
+  left: 50%;
+  top: 9.05rem;
+  width: 1.9rem;
+  height: 1.4rem;
+  transform: translateX(-50%);
+  border-radius: 0.45rem;
+  background: #bd714a;
+  z-index: 2;
+}
+
+.style-avatar__hood {
+  position: absolute;
+  left: 50%;
+  top: 8.35rem;
+  width: 8.4rem;
+  height: 5rem;
+  transform: translateX(-50%);
+  border-radius: 4rem 4rem 1.4rem 1.4rem;
+  background: linear-gradient(135deg, #10243a, #050912 78%);
+  box-shadow: inset 0 0 0 1px rgba(56, 215, 255, 0.16);
+  z-index: 1;
+}
+
+.style-avatar__hood i {
+  position: absolute;
+  top: 1.35rem;
+  width: 0.12rem;
+  height: 2.25rem;
+  border-radius: 999px;
+  background: var(--cyan);
+  box-shadow: 0 0 0.8rem rgba(56, 215, 255, 0.45);
+}
+
+.style-avatar__hood i:first-child {
+  left: 3.2rem;
+  transform: rotate(-9deg);
+}
+
+.style-avatar__hood i:last-child {
+  right: 3.2rem;
+  transform: rotate(9deg);
+}
+
+.style-avatar__jacket {
+  position: absolute;
+  left: 50%;
+  bottom: 1rem;
+  width: 11.4rem;
+  height: 6.6rem;
+  transform: translateX(-50%);
+  border-radius: 2.3rem 2.3rem 1rem 1rem;
+  background:
+    linear-gradient(90deg, transparent 49.3%, rgba(56, 215, 255, 0.55) 49.6% 50.4%, transparent 50.7%),
+    linear-gradient(135deg, #142a45, #07111f 70%);
+  z-index: 0;
+}
+
+.style-avatar__zip {
+  position: absolute;
+  left: 50%;
+  top: 0.9rem;
+  width: 0.09rem;
+  height: 4.8rem;
+  transform: translateX(-50%);
+  background: rgba(238, 246, 255, 0.28);
+}
+
+.style-avatar__chain {
+  position: absolute;
+  left: 50%;
+  top: 0.9rem;
+  width: 2.7rem;
+  height: 1.2rem;
+  transform: translateX(-50%);
+  border-bottom: 0.14rem solid rgba(255, 209, 102, 0.9);
+  border-radius: 0 0 2rem 2rem;
+}
+
+.style-avatar__badge {
+  position: absolute;
+  right: 2.15rem;
+  top: 2.05rem;
+  padding: 0.22rem 0.34rem;
+  border: 1px solid rgba(56, 215, 255, 0.46);
+  border-radius: 0.38rem;
+  color: var(--cyan);
+  font-family: var(--mono);
+  font-size: 0.56rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.style-avatar__laptop {
+  position: absolute;
+  left: 50%;
+  bottom: 0.2rem;
+  width: 7.2rem;
+  height: 3.05rem;
+  transform: translateX(-50%);
+  border: 1px solid rgba(56, 215, 255, 0.3);
+  border-radius: 0.55rem 0.55rem 0.2rem 0.2rem;
+  background: linear-gradient(180deg, #0d1b2d, #020a12);
+  z-index: 7;
+}
+
+.style-avatar__laptop span {
+  position: absolute;
+  left: 1.2rem;
+  top: 0.85rem;
+  width: 4.6rem;
+  height: 0.25rem;
+  border-radius: 999px;
+  background: var(--cyan);
+  box-shadow: 0 0 1.1rem rgba(56, 215, 255, 0.58);
+}
+
+.style-avatar__laptop i {
+  position: absolute;
+  left: 1.2rem;
+  top: 1.45rem;
+  width: 3.2rem;
+  height: 0.18rem;
+  border-radius: 999px;
+  background: rgba(255, 209, 102, 0.9);
 }
 
 .terminal {
