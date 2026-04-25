@@ -172,10 +172,10 @@ const lerp = (a, b, t) => a + (b - a) * t;
   });
   const hair = new THREE.MeshStandardMaterial({ color: 0x111827, roughness: 0.75 });
   const hoodie = new THREE.MeshPhysicalMaterial({
-    color: 0x12324d,
-    roughness: 0.48,
-    metalness: 0.08,
-    clearcoat: 0.25,
+    color: 0x07111f,
+    roughness: 0.42,
+    metalness: 0.12,
+    clearcoat: 0.35,
   });
   const cyanMat = new THREE.MeshBasicMaterial({
     color: 0x38d7ff,
@@ -188,20 +188,39 @@ const lerp = (a, b, t) => a + (b - a) * t;
     metalness: 0.75,
     clearcoat: 1,
   });
-  const hoodieDark = new THREE.MeshStandardMaterial({ color: 0x07111f, roughness: 0.82 });
+  const hoodieDark = new THREE.MeshStandardMaterial({ color: 0x030712, roughness: 0.86 });
   const hoodieTrim = new THREE.MeshStandardMaterial({ color: 0x38d7ff, roughness: 0.55 });
   const stickerMat = new THREE.MeshBasicMaterial({ color: 0xffd166 });
   const laptopLineMat = new THREE.MeshBasicMaterial({ color: 0x7cf7ff, transparent: true, opacity: 0.82 });
+  const goldMat = new THREE.MeshPhysicalMaterial({
+    color: 0xffd166,
+    roughness: 0.28,
+    metalness: 0.9,
+    clearcoat: 0.45,
+  });
 
-  const hood = new THREE.Mesh(new THREE.TorusGeometry(0.96, 0.22, 18, 48), hoodieDark);
-  hood.position.set(0, 0.18, -0.06);
-  hood.scale.set(1.04, 1.22, 0.5);
+  const hood = new THREE.Mesh(new THREE.TorusGeometry(1.06, 0.24, 22, 56), hoodieDark);
+  hood.position.set(0, 0.08, -0.1);
+  hood.scale.set(1.12, 1.28, 0.54);
   root.add(hood);
 
-  const body = new THREE.Mesh(new THREE.CapsuleGeometry(1.34, 1.55, 10, 28), hoodie);
-  body.position.y = -1.55;
-  body.scale.set(1.2, 0.96, 0.66);
+  const body = new THREE.Mesh(new THREE.CapsuleGeometry(1.34, 1.38, 10, 28), hoodie);
+  body.position.y = -1.68;
+  body.scale.set(1.06, 0.94, 0.58);
   root.add(body);
+
+  const shoulders = new THREE.Mesh(new THREE.BoxGeometry(2.95, 0.5, 0.86), hoodie);
+  shoulders.position.set(0, -1.45, 0.05);
+  shoulders.rotation.x = -0.08;
+  root.add(shoulders);
+
+  const jacketLeft = new THREE.Mesh(new THREE.BoxGeometry(0.72, 1.55, 0.08), hoodieDark);
+  jacketLeft.position.set(-0.38, -1.74, 0.66);
+  jacketLeft.rotation.z = 0.18;
+  const jacketRight = jacketLeft.clone();
+  jacketRight.position.x = 0.38;
+  jacketRight.rotation.z = -0.18;
+  root.add(jacketLeft, jacketRight);
 
   const neck = new THREE.Mesh(new THREE.CylinderGeometry(0.32, 0.38, 0.48, 24), skin);
   neck.position.y = -0.58;
@@ -212,23 +231,43 @@ const lerp = (a, b, t) => a + (b - a) * t;
   head.scale.set(0.9, 1.06, 0.84);
   root.add(head);
 
-  const hairCap = new THREE.Mesh(new THREE.SphereGeometry(0.9, 36, 16, 0, Math.PI * 2, 0, Math.PI * 0.55), hair);
-  hairCap.position.set(0, 0.58, -0.03);
-  hairCap.scale.set(0.96, 0.68, 0.92);
+  const hairCap = new THREE.Mesh(new THREE.SphereGeometry(0.92, 42, 18, 0, Math.PI * 2, 0, Math.PI * 0.52), hair);
+  hairCap.position.set(0, 0.61, -0.02);
+  hairCap.scale.set(1.0, 0.62, 0.92);
   root.add(hairCap);
+
+  const sideFadeL = new THREE.Mesh(new THREE.BoxGeometry(0.23, 0.55, 0.16), hair);
+  sideFadeL.position.set(-0.78, 0.34, 0.22);
+  sideFadeL.rotation.z = 0.12;
+  const sideFadeR = sideFadeL.clone();
+  sideFadeR.position.x = 0.78;
+  sideFadeR.rotation.z = -0.12;
+  root.add(sideFadeL, sideFadeR);
 
   const hairTufts = new THREE.Group();
   [
-    [-0.36, 0.78, 0.55, 0.66, -0.15, 0.42],
-    [-0.08, 0.86, 0.62, 0.72, 0.05, 0.08],
-    [0.24, 0.78, 0.57, 0.62, 0.2, -0.36],
+    [-0.44, 0.83, 0.55, 0.72, -0.2, 0.5],
+    [-0.12, 0.94, 0.64, 0.78, 0.06, 0.18],
+    [0.26, 0.86, 0.58, 0.7, 0.22, -0.42],
+    [0.04, 0.82, 0.7, 0.88, 0.04, -0.02],
   ].forEach(([x, y, z, rx, ry, rz]) => {
-    const tuft = new THREE.Mesh(new THREE.ConeGeometry(0.18, 0.38, 5), hair);
+    const tuft = new THREE.Mesh(new THREE.ConeGeometry(0.2, 0.44, 5), hair);
     tuft.position.set(x, y, z);
     tuft.rotation.set(rx, ry, rz);
     hairTufts.add(tuft);
   });
   root.add(hairTufts);
+
+  const headphoneBand = new THREE.Mesh(new THREE.TorusGeometry(0.96, 0.035, 12, 48, Math.PI), glassMat);
+  headphoneBand.position.set(0, 0.65, -0.02);
+  headphoneBand.rotation.z = Math.PI;
+  headphoneBand.scale.set(1.08, 0.96, 0.28);
+  const cupL = new THREE.Mesh(new THREE.CylinderGeometry(0.18, 0.18, 0.16, 22), glassMat);
+  cupL.position.set(-0.9, 0.17, 0.18);
+  cupL.rotation.z = Math.PI / 2;
+  const cupR = cupL.clone();
+  cupR.position.x = 0.9;
+  root.add(headphoneBand, cupL, cupR);
 
   const earL = new THREE.Mesh(new THREE.SphereGeometry(0.15, 16, 12), skin);
   earL.position.set(-0.84, 0.16, 0.1);
@@ -263,7 +302,7 @@ const lerp = (a, b, t) => a + (b - a) * t;
   browR.rotation.z = -0.14;
   root.add(browL, browR);
 
-  const lensGeom = new THREE.TorusGeometry(0.22, 0.022, 10, 34);
+  const lensGeom = new THREE.TorusGeometry(0.24, 0.024, 10, 36);
   const lensL = new THREE.Mesh(lensGeom, glassMat);
   lensL.position.set(-0.3, 0.3, 0.79);
   const lensR = lensL.clone();
@@ -278,11 +317,11 @@ const lerp = (a, b, t) => a + (b - a) * t;
   templeR.rotation.y = 0.42;
   root.add(lensL, lensR, bridge, templeL, templeR);
 
-  const drawStringL = new THREE.Mesh(new THREE.CylinderGeometry(0.018, 0.018, 0.82, 10), hoodieTrim);
-  drawStringL.position.set(-0.28, -0.98, 0.69);
+  const drawStringL = new THREE.Mesh(new THREE.CylinderGeometry(0.018, 0.018, 0.72, 10), hoodieTrim);
+  drawStringL.position.set(-0.32, -1.0, 0.7);
   drawStringL.rotation.z = -0.14;
   const drawStringR = drawStringL.clone();
-  drawStringR.position.x = 0.28;
+  drawStringR.position.x = 0.32;
   drawStringR.rotation.z = 0.14;
   const knotL = new THREE.Mesh(new THREE.SphereGeometry(0.052, 12, 12), hoodieTrim);
   knotL.position.set(-0.36, -1.36, 0.7);
@@ -290,43 +329,49 @@ const lerp = (a, b, t) => a + (b - a) * t;
   knotR.position.x = 0.36;
   root.add(drawStringL, drawStringR, knotL, knotR);
 
+  const chain = new THREE.Mesh(new THREE.TorusGeometry(0.48, 0.018, 10, 46, Math.PI), goldMat);
+  chain.position.set(0, -1.06, 0.72);
+  chain.rotation.z = Math.PI;
+  chain.scale.set(1.25, 0.48, 0.2);
+  root.add(chain);
+
   const sleeveGeom = new THREE.CapsuleGeometry(0.22, 0.92, 8, 18);
   const sleeveL = new THREE.Mesh(sleeveGeom, hoodie);
-  sleeveL.position.set(-1.08, -1.42, 0.48);
-  sleeveL.rotation.set(0.55, 0.08, -0.52);
+  sleeveL.position.set(-1.2, -1.5, 0.5);
+  sleeveL.rotation.set(0.58, 0.08, -0.62);
   const sleeveR = sleeveL.clone();
-  sleeveR.position.x = 1.08;
-  sleeveR.rotation.z = 0.52;
+  sleeveR.position.x = 1.2;
+  sleeveR.rotation.z = 0.62;
   root.add(sleeveL, sleeveR);
 
   const handL = new THREE.Mesh(new THREE.SphereGeometry(0.16, 16, 12), skin);
-  handL.position.set(-0.82, -1.86, 1.08);
+  handL.position.set(-0.88, -1.86, 1.1);
   handL.scale.set(1.25, 0.6, 0.75);
   const handR = handL.clone();
-  handR.position.x = 0.82;
+  handR.position.x = 0.88;
   root.add(handL, handR);
 
   const laptop = new THREE.Group();
-  const screen = new THREE.Mesh(new THREE.BoxGeometry(1.8, 0.95, 0.06), new THREE.MeshPhysicalMaterial({
+  const screen = new THREE.Mesh(new THREE.BoxGeometry(1.55, 0.78, 0.06), new THREE.MeshPhysicalMaterial({
     color: 0x08111f,
     emissive: 0x06344d,
     emissiveIntensity: 0.7,
     roughness: 0.24,
     metalness: 0.25,
   }));
-  screen.position.set(0, -1.32, 1.05);
+  screen.position.set(0, -1.42, 1.08);
   screen.rotation.x = -0.18;
-  const screenGlow = new THREE.Mesh(new THREE.PlaneGeometry(1.45, 0.58), cyanMat);
-  screenGlow.position.set(0, -1.31, 1.088);
+  const screenGlow = new THREE.Mesh(new THREE.PlaneGeometry(1.12, 0.44), cyanMat);
+  screenGlow.position.set(0, -1.41, 1.12);
   screenGlow.rotation.x = -0.18;
   const codeLineGroup = new THREE.Group();
   [-0.18, 0, 0.18].forEach((y, index) => {
     const line = new THREE.Mesh(new THREE.PlaneGeometry(0.95 - index * 0.18, 0.025), laptopLineMat);
-    line.position.set(-0.05 + index * 0.06, -1.31 + y, 1.092);
+    line.position.set(-0.05 + index * 0.06, -1.41 + y * 0.75, 1.124);
     line.rotation.x = -0.18;
     codeLineGroup.add(line);
   });
-  const base = new THREE.Mesh(new THREE.BoxGeometry(2.05, 0.08, 0.85), glassMat);
+  const base = new THREE.Mesh(new THREE.BoxGeometry(1.82, 0.08, 0.78), glassMat);
   base.position.set(0, -1.83, 1.35);
   base.rotation.x = 0.36;
   const stickerA = new THREE.Mesh(new THREE.BoxGeometry(0.2, 0.11, 0.012), stickerMat);
