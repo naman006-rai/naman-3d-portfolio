@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="./styles.css?v=stylish-human-2" />
+  <link rel="stylesheet" href="./styles.css?v=namanos-1" />
 
   <script type="importmap">
     {
@@ -52,11 +52,16 @@
           Bengaluru, India · AI systems + cloud platforms
         </div>
         <h1>
-          Building useful AI systems on boring, reliable infrastructure.
+          I build the control planes behind internal AI products.
         </h1>
         <p class="hero__lead">
-          I like the parts of software where demos stop and systems begin: retrieval quality, event boundaries, idempotency, auth, observability, infra, and the UX that makes all of it usable.
+          My work sits between product, infra, and AI: RPA operations dashboards, webhook event pipes, authenticated React SPAs, and RAG assistants that turn messy enterprise knowledge into something usable.
         </p>
+        <div class="proof-log" aria-label="Proof points">
+          <span><b>nike/cpi</b> 19+ bot processes monitored</span>
+          <span><b>rag</b> 947 Confluence pages indexed</span>
+          <span><b>infra</b> Lambda · DynamoDB · Terraform · CDK</span>
+        </div>
         <div class="hero__actions">
           <a class="btn btn--primary" href="#projects">
             Read the systems
@@ -87,12 +92,12 @@
 
       <aside class="hero-card">
         <div class="hero-card__top">
-          <span>Current focus</span>
+          <span>NamanOS // portfolio build</span>
           <span class="status">Available</span>
         </div>
-        <h2>Not "AI wrapper." Actual systems engineer.</h2>
+        <h2>Internal tools, AI agents, and serverless systems with receipts.</h2>
         <p>
-          I turn unclear internal workflows into tools people use: dashboards, event pipelines, RAG assistants, and authenticated SPAs running on AWS.
+          The visible part is a UI. The real work is replay-safe events, retrieval quality, auth, infra, observability, and making failure states obvious.
         </p>
         <div class="avatar-stage">
           <canvas id="avatar-canvas" class="avatar-canvas--hidden" aria-hidden="true"></canvas>
@@ -132,18 +137,23 @@
             </div>
           </div>
           <div class="avatar-stage__label">
-            <span>3D avatar</span>
+            <span>NamanOS avatar</span>
             <strong>Stylish engineer mode</strong>
+          </div>
+          <div class="avatar-dossier">
+            <span>mode: shipping</span>
+            <span>stack: aws / react / rag</span>
+            <span>city: bengaluru</span>
           </div>
         </div>
         <div class="terminal">
           <div class="terminal__bar"><i></i><i></i><i></i></div>
-          <pre><code>systems I enjoy:
-  - ambiguous problem -> working product
-  - retrieval that can be evaluated
-  - serverless flows with replay safety
-  - UIs that expose the right state
-  - infra that can be rebuilt</code></pre>
+          <pre><code>namanos boot:
+  ingest messy workflows
+  model the state machine
+  add replay + idempotency
+  expose status in UI
+  instrument before handoff</code></pre>
         </div>
       </aside>
     </section>
@@ -152,6 +162,31 @@
       <div class="ticker__track">
         <span>AWS Serverless</span><span>React</span><span>Node.js</span><span>Java</span><span>RAG Engineering</span><span>Terraform</span><span>Okta SSO</span><span>Kubernetes</span>
         <span>AWS Serverless</span><span>React</span><span>Node.js</span><span>Java</span><span>RAG Engineering</span><span>Terraform</span><span>Okta SSO</span><span>Kubernetes</span>
+      </div>
+    </section>
+
+    <section class="section signature" id="signature">
+      <div class="signature__rail">
+        <span>not a landing page</span>
+        <span>not a resume dump</span>
+        <span>systems, evidence, taste</span>
+      </div>
+      <div class="signature__grid">
+        <article class="signature-card reveal">
+          <div class="signature-card__code">control-plane</div>
+          <h3>Operational dashboards for messy real-world workflows.</h3>
+          <p>RPA bot processes, calendars, uploads, and integrations all need the same thing: visible state, reliable retries, ownership, and a UI that shows what happened.</p>
+        </article>
+        <article class="signature-card reveal">
+          <div class="signature-card__code">event-pipe</div>
+          <h3>Webhook systems that do not panic on duplicate reality.</h3>
+          <p>Box to API Gateway to Lambda to DynamoDB to UI, with condition-expression idempotency so repeated events become boring.</p>
+        </article>
+        <article class="signature-card reveal">
+          <div class="signature-card__code">rag-workbench</div>
+          <h3>Enterprise RAG that respects retrieval, not just prompts.</h3>
+          <p>Ollama, FAISS, BM25, HyDE, and 947 Confluence pages, shaped into an assistant that can cite where its confidence comes from.</p>
+        </article>
       </div>
     </section>
 
@@ -441,6 +476,6 @@
     <a href="mailto:naman.rai006@gmail.com">naman.rai006@gmail.com</a>
   </footer>
 
-  <script type="module" src="./app.js?v=stylish-human-2"></script>
+  <script type="module" src="./app.js?v=namanos-1"></script>
 </body>
 </html>
